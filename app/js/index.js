@@ -6,25 +6,25 @@ window.onload = getTodoList;
 
 function addTodoList() {
   const todo = prompt("Let's add your todo!");
-  let todos = JSON.parse(localStorage.todo);
+  let todos = JSON.parse(localStorage.getItem("todo"));
 
   if (todos) {
     localStorage.setItem("todo", JSON.stringify([...todos, {
       name: todo,
       isDone: false,
     }]));
-    
-    showTodos(JSON.parse(localStorage.todo));
+
+    showTodos(JSON.parse(localStorage.getItem("todo")));
   } else {
     localStorage.setItem("todo", JSON.stringify([{
       name: todo,
       isDone: false,
     }]));
 
-    showTodos(JSON.parse(localStorage.todo));
+    showTodos(JSON.parse(localStorage.getItem("todo")));
   }
 
- };
+};
 
 function getTodoList() {
   const todos = JSON.parse(localStorage.getItem("todo"));
@@ -56,7 +56,7 @@ function showTodos(todos) {
 }
 
 function toggleDone(name) {
-  const todos = JSON.parse(localStorage.todo);
+  const todos = JSON.parse(localStorage.getItem("todo"));
 
   for (let index = 0; index < todos.length; index++) {
     const todo = todos[index];
@@ -64,7 +64,7 @@ function toggleDone(name) {
     if (todo.name.search(name) === 0) {
       todos[index].isDone = !todo.isDone;
       localStorage.setItem("todo", JSON.stringify(todos));
-      
+
       showTodos(todos);
       break;
     }
@@ -72,7 +72,7 @@ function toggleDone(name) {
 }
 
 function deleteTodoList(name) {
-  const todos = JSON.parse(localStorage.todo);
+  const todos = JSON.parse(localStorage.getItem("todo"));
 
   for (let index = 0; index < todos.length; index++) {
     const todo = todos[index];
