@@ -1,0 +1,3 @@
+## Tolist - the simple and minimal todo list
+![tolist side project](./recording.gif)
+I made this website just for fun because I was bored...
